@@ -6,7 +6,7 @@ pub struct ThreadPool{
     sender: mpsc::Sender<Job>,
 }
 
-struct Job = Box<dyn FnOnce() + Send + 'static>;
+type Job = Box<dyn FnOnce() + Send + 'static>;
 
 impl ThreadPool {
     /// Create a new ThreadPool.
@@ -58,6 +58,6 @@ impl Worker {
         
         });
 
-        Worker {id, thread}
+        Worker { id, thread }
     }
 }
